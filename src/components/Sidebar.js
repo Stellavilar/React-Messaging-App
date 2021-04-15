@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Tab, Nav } from 'react-bootstrap';
+import { Tab, Nav, Button } from 'react-bootstrap';
 import Conversations from './Conversations';
 import Contacts from './Contacts';
 
 const CONVERSATION_KEY = "conversations";
 const CONTACTS_KEY = "contacts";
 
-export default function Sidebar() {
+export default function Sidebar({ id }) {
+
     const [ activeKey, setActiveKey ] = useState(CONVERSATION_KEY);
+    const conversationsOpen = activeKey === CONVERSATION_KEY;
+
     return (
         <div style={{width: '250px'}} className="d-flex flex-column">
             <Tab.Container activeKey={activeKey} onSelect={setActiveKey} >
@@ -27,6 +30,12 @@ export default function Sidebar() {
                         <Contacts />
                     </Tab.Pane>
                 </Tab.Content>
+                <div className="p-2 border-top border-right small">
+                    Votre Id: <span className="text-muted">{id}</span>
+                </div>
+                <Button className="rounded-0">
+                    New { conversationsOpen ? 'Conversations' : 'Contacts'}
+                </Button>
             </Tab.Container>
         </div>
     );
