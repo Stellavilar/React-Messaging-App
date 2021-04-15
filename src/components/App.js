@@ -8,7 +8,7 @@ function App() {
   const [ id, setId ] = useLocalStorage('id');
   return (
     <>
-      {id ? <Dashboard /> : <Login getId={setId} /> }
+      {id ? <Dashboard id={id}/> : <Login getId={setId} /> }
     </>
   );
 };
