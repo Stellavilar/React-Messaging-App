@@ -6,7 +6,7 @@ import { useConversations } from '../contexts/ConversationsProvider';
 export default function NewConversationModal({ closeModal }) {
 const [selectedContactIds, setSelectedContactIds ] = useState([]);
 const { contacts } = useContacts();
-const { createConversation } = useConversations();
+const { createConversations } = useConversations();
 
 function handleCheckboxChange(contactID) {
     setSelectedContactIds(prevSelectedContactIds => {
@@ -22,7 +22,7 @@ function handleCheckboxChange(contactID) {
 
 function handleSubmit(e) {
     e.preventDefault();
-    createConversation(selectedContactIds)
+    createConversations(selectedContactIds)
     closeModal();
 }
 
