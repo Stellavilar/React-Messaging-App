@@ -3,6 +3,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import { ContactsProvider } from '../contexts/ContactsProvider';
+import { ConversationsProvider } from '../contexts/ConversationsProvider';
 
 function App() {
   //Get new id thanks to useLocalStorage function
@@ -11,7 +12,9 @@ function App() {
 const dashboard = (
   //Dashboard has to be included in Provider to share some data and update it (contacts, conversations)
   <ContactsProvider>
-    <Dashboard id={id}/>
+    <ConversationsProvider>
+      <Dashboard id={id}/>
+    </ConversationsProvider>
   </ContactsProvider>
 );
 
