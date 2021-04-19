@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Stellavilar/React-Messaging-App/issues"
   },
-  "homepage": "https://github.com/Stellavilar/React-Messaging-App#readme"
+  "homepage": "https://github.com/Stellavilar/React-Messaging-App#readme",
+  "dependencies": {
+    "react-scripts": "^4.0.3"
+  }
 }
