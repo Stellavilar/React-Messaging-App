@@ -1,6 +1,7 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState, useCallback, useEffect } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useContacts } from './ContactsProvider';
+import { useSocket } from './SocketProvider';
 //Use context is used to share some global data between several components
 //createContext is used to create an object. The Provider allows the components to be updated
 const ConversationsContext = React.createContext();
@@ -15,6 +16,7 @@ export function ConversationsProvider({ id, children }) {
     const [ conversations, setConversations ] = useLocalStorage('conversations', []);
     const [ selectedConversationIndex, setSelectedConversationIndex ] = useState(0);
     const { contacts } = useContacts();
+    const socket = useSocket();
 
     function createConversation(recipients) {
         setConversations(prevConversations => {
@@ -46,9 +48,20 @@ export function ConversationsProvider({ id, children }) {
         });
     }, [setConversations]);
 
+    useEffect(() => {
+        if(socket == null ) return ;
+
+        socket.on('receive-message', addMessageToConversation );
+
+        return () => socket.off('receive-message')
+    }, [socket, addMessageToConversation]);
+
     function sendMessage(recipients, text ) {
+        socket.emit('send-message', { recipients, text })
+
         addMessageToConversation({ recipients, text, sender: id })
     };
+
 
     const formattedConversations = conversations.map((conversation, index) => {
         const recipients = conversation.recipients.map(recipient => {

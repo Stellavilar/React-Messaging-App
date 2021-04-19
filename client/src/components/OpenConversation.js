@@ -29,7 +29,7 @@ function handleSubmit(e) {
                         return (
                             <div
                                 key={index}
-                                className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end' : ''}`}
+                                className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end align-items-end' : 'align-items-start'}`}
                                 ref={lastMessage ? setRef : null }
                             >
                                 <div className={`rounded px-2 py-1 ${message.fromMe ? 'bg-primary text-white' : 'border'}`}>
