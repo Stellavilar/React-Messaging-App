@@ -32,7 +32,7 @@ function handleSubmit(e) {
                                 className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end align-items-end' : 'align-items-start'}`}
                                 ref={lastMessage ? setRef : null }
                             >
-                                <div className={`rounded px-2 py-1 ${message.fromMe ? 'bg-primary text-white' : 'border'}`}>
+                                <div className={`rounded px-2 py-1 ${message.fromMe ? 'bg-info text-white' : 'border'}`}>
                                     {message.text}
                                 </div>
                                 <div className={`text-muted small ${message.fromMe ? 'text-right' : ''}`}>
@@ -51,10 +51,10 @@ function handleSubmit(e) {
                         required
                         value={text}
                         onChange={e => setText(e.target.value)}
-                        style={{ height: '75px', resize: 'none'}}
+                        style={{ height: '45px', resize: 'none'}}
                     />
                     <InputGroup.Append>
-                    <Button type="submit" >Envoyer</Button>
+                    <Button type="submit" variant="flat" style={{backgroundColor: '#2f8b8e', color: 'white'}}>Envoyer</Button>
                     </InputGroup.Append>
                     </InputGroup>
                 </Form.Group>

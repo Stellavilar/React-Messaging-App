@@ -14,6 +14,7 @@ export default function Conversations() {
                     action
                     onClick={() => selectedConversationIndex(index)}
                     active={conversation.selected}
+                    style={{backgroundColor: 'grey'}}
                 >
                     {/* display contacts name for conversations */}
                     {conversation.recipients.map(r => r.name).join(', ')}

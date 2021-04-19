@@ -15,7 +15,7 @@ const dashboard = (
   <SocketProvider id={id}>
     <ContactsProvider>
       <ConversationsProvider>
-        <Dashboard id={id}/>
+          <Dashboard id={id}/>
       </ConversationsProvider>
     </ContactsProvider>
   </SocketProvider>
@@ -25,7 +25,7 @@ const dashboard = (
   return (
     //If there is an id saved into the localStorage, show the dashboard, if not show the login form
     <>
-      {id ? dashboard : <Login getId={setId} /> }
+      {id ? dashboard : <Login getId={setId} />  }
     </>
   );
 };

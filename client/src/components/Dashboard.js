@@ -8,7 +8,8 @@ export default function Dashboard({ id }) {
 
     return (
         <div className="d-flex" style={{ height: '100vh' }}>
-            <Sidebar id={id} />
+           <Sidebar id={id} />
+            
             { selectedConversation && <OpenConversation />}
         </div>
         

@@ -9,7 +9,6 @@ const CONVERSATION_KEY = "conversations";
 const CONTACTS_KEY = "contacts";
 
 export default function Sidebar({ id }) {
-
     //Management of tab panes:
     const [ activeKey, setActiveKey ] = useState(CONVERSATION_KEY);
     const conversationsOpen = activeKey === CONVERSATION_KEY;
@@ -43,8 +42,8 @@ export default function Sidebar({ id }) {
                 <div className="p-2 border-top border-right small">
                     Votre Id: <span className="text-muted">{id}</span>
                 </div>
-                <Button className="rounded-0" onClick={() => setModalOpen(true)} >
-                    New { conversationsOpen ? 'Conversations' : 'Contacts'}
+                <Button className="rounded-0" onClick={() => setModalOpen(true)} style={{backgroundColor: '#2f8b8e'}}>
+                    Ajouter { conversationsOpen ? 'une discussion' : 'un contact'}
                 </Button>
             </Tab.Container>
             <Modal show={modalOpen} onHide={closeModal} >
