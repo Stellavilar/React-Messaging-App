@@ -1,8 +1,8 @@
-const httpServer = require ('http');
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
 
-const server = httpServer.createServer((req, res) => {
-    res.end()
-})
+const PORT = 5000;
 
 const io = require('socket.io')(server, {
     cors: {
@@ -13,6 +13,7 @@ const io = require('socket.io')(server, {
     }
 });
 
+app.use(express.static(__dirname + '/../client/build'));
 
 io.on('connection', socket => {
     //When connect to the socket, pass the id of the user:
@@ -31,4 +32,6 @@ io.on('connection', socket => {
         });
     });
 });
-server.listen(5000);
+server.listen(PORT, () => {
+    console.log('Connected to port:' + PORT);
+});
